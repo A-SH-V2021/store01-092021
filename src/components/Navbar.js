@@ -14,7 +14,7 @@ const Nav = () => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-           <h3>React learning</h3>
+           <h3>React</h3>
           </Link>
           <button type="button" className="nav-toggle">
             <FaBars></FaBars>
