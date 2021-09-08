@@ -1,24 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { PageHero, StripeCheckout } from '../components'
+import { PageHero} from '../components'
 
-// extra imports
-import { useCartContext } from '../context/cart_context'
-import { Link } from 'react-router-dom'
+
 
 const CheckoutPage = () => {
   return (
-    <>
-      <h1>chechout</h1>
-    </>
+    <main>
+      <PageHero title='checkout'></PageHero>
+      <Wrapper>
+        <h1>checkout</h1>
+      </Wrapper>
+    </main>
   )
 }
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .empty {
-    text-align: center;
-  }
+ display:flex;
+ justify-content:center;
 `
 export default CheckoutPage
