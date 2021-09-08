@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 const Contact = () => {
   return (
-   <div className=""></div>
+   <div className="">
+     <h2>content</h2>
+   </div>
   )
 }
 const Wrapper = styled.section`

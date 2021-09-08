@@ -9,7 +9,9 @@ import Product from './Product'
 const FeaturedProducts = () => {
  
   return (
-    <div className=""></div>
+    <div className="">
+      <h1>featureproducts</h1>
+    </div>
   )
 }
 

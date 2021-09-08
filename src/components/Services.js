@@ -4,7 +4,9 @@ import { services } from '../utils/constants'
 
 const Services = () => {
   return (
-    <div className=""></div>
+    <div className="">
+      <h2>services</h2>
+    </div>
   )
 }
 
