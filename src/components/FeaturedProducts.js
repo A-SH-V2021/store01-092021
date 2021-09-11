@@ -1,19 +1,38 @@
-import React from 'react'
-import { useProductsContext } from '../context/products_context'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import Error from './Error'
-import Loading from './Loading'
-import Product from './Product'
+import React from "react";
+import { useProductsContext } from "../context/products_context";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Error from "./Error";
+import Loading from "./Loading";
+import Product from "./Product";
 
 const FeaturedProducts = () => {
- 
+  const {
+    products_Loading,
+    products_error,
+    feature_products: data,
+  } = useProductsContext();
+
+  if (products_Loading) {
+    return <Loading />;
+  }
+  if (products_error) {
+    return <Error />;
+  }
   return (
-    <div className="">
-      <h1>featureproducts</h1>
-    </div>
-  )
-}
+    <Wrapper className="section">
+      <div className="title">
+        <h1>featured</h1>
+        <div className="underline"></div>
+      </div>
+      <div className="section-center featured">
+        {data.map((item) => {
+          return <Product key={item.id} {...item} />;
+        })}
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.section`
   background: var(--clr-grey-10);
@@ -36,6 +55,6 @@ const Wrapper = styled.section`
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
   }
-`
+`;
 
-export default FeaturedProducts
+export default FeaturedProducts;
