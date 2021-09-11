@@ -15,6 +15,10 @@ import {
 
 const initialState = {
   isSidebarOpen: false,
+  products_Loading: false,
+  products_error: false,
+  products: [],
+  feature_products: [],
 };
 
 const ProductsContext = React.createContext();
@@ -31,8 +35,14 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const fetchData = async (url) => {
-    const response = await axios(url);
-    console.log(response.data);
+    dispatch({ type: GET_PRODUCTS_BEGIN });
+    try {
+      const response = await axios(url);
+      const products = response.data;
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
+    } catch (error) {
+      dispatch({type:GET_PRODUCTS_ERROR})
+    }
   };
 
   useEffect(() => {
