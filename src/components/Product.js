@@ -9,12 +9,12 @@ const Product = ({ id, image, name, price }) => {
     <Wrapper>
       <div className="container">
         <img src={image} alt={name} />
-        <Link to={`/products/${id}`} className='link'>
+        <Link to={`/products/${id}`} className="link">
           <FaSearch />
         </Link>
         <footer>
           <h5> {name}</h5>
-          <p>{price}</p>
+          <p>{price / 100}</p>
         </footer>
       </div>
     </Wrapper>

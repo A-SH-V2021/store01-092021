@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
-import { useProductsContext } from '../context/products_context'
-import { single_product_url as url } from '../utils/constants'
-import { formatPrice } from '../utils/helpers'
+import React, { useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { useProductsContext } from "../context/products_context";
+import { single_product_url as url } from "../utils/constants";
+import { formatPrice } from "../utils/helpers";
 import {
   Loading,
   Error,
@@ -10,16 +10,59 @@ import {
   AddToCart,
   Stars,
   PageHero,
-} from '../components'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+} from "../components";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { useUserContext } from "../context/user_context";
 
 const SingleProductPage = () => {
-  
+  const { id } = useParams();
+  // const history = useHistory();
+  const {
+    fetchSingleProduct,
+    single_pro_loading,
+    single_pro_error,
+    single_product,
+  } = useProductsContext();
+
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`);
+  }, [id]);
+
+  // useEffect(() => {
+  //   console.log(single_pro_error);
+  //   if (single_pro_error) {
+  //     setTimeout(() => {
+  //       history.push("/");
+  //     }, 3000);
+  //   }
+  // }, [single_pro_error]);
+
+  if (single_pro_loading) {
+    return <Loading />;
+  }
+
+  if (single_pro_error) {
+    return <Error />;
+  }
+  const {
+    id: vip,
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    company,
+    images,
+  } = single_product;
+
   return (
-    <h1>singlePage</h1>
-  )
-}
+    <Wrapper>
+      <PageHero title={name} />
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.main`
   .product-center {
@@ -53,6 +96,6 @@ const Wrapper = styled.main`
       font-size: 1.25rem;
     }
   }
-`
+`;
 
-export default SingleProductPage
+export default SingleProductPage;

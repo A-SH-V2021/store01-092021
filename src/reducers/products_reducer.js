@@ -23,7 +23,7 @@ const products_reducer = (state, action) => {
     const feature_products = action.payload.filter(
       (item) => item.featured === true
     );
-   console.log(feature_products);
+
     return {
       ...state,
       products: action.payload,
@@ -34,6 +34,22 @@ const products_reducer = (state, action) => {
 
   if (action.type === GET_PRODUCTS_ERROR) {
     return { ...state, products_loading: false, products_error: true };
+  }
+
+  if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
+    return { ...state, single_pro_loading: true, single_pro_error: false };
+  }
+
+  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
+    return { ...state, single_pro_loading: false, single_pro_error: true };
+  }
+
+  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
+    return {
+      ...state,
+      single_product: action.payload,
+      single_pro_loading: false,
+    };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

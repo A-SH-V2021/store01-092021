@@ -25,7 +25,7 @@ function App() {
         <Route path="/Cart" exact component={Cart}></Route>
         <Route path="/Products" exact component={Products}></Route>
         <Route path="/Checkout" exact component={Checkout}></Route>
-        <Route path="/details/:id" exact component={SingleProduct}></Route>
+        <Route path="/products/:id" exact component={SingleProduct}></Route>
         <Route path="*" exact component={Error}></Route>
       </Switch>
       <Footer></Footer>
