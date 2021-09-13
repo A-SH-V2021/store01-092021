@@ -6,7 +6,9 @@ const Stars = () => {
    
 
   return (
-   <div className=""></div>
+   <div className="">
+     <h2>star</h2>
+   </div>
   )
 }
 

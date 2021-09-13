@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const ProductImages = ({ images = [{ url: '' }] }) => {
+const ProductImages = () => {
   return (
-    <div className=""></div>
+    <div className="">
+      <h3>product image single</h3>
+    </div>
   )
 }
 

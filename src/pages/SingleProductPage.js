@@ -46,7 +46,7 @@ const SingleProductPage = () => {
     return <Error />;
   }
   const {
-    id: vip,
+    id: sku,
     name,
     price,
     description,
@@ -59,7 +59,34 @@ const SingleProductPage = () => {
 
   return (
     <Wrapper>
-      <PageHero title={name} />
+      <PageHero title={name} product />
+      <div className="section section-center page">
+        <Link to="/products" className="btn">
+          back product
+        </Link>
+        <div className="product-center">
+          <ProductImages />
+          <section className="content">
+            <h2>{name}</h2>
+            <Stars />
+            <h5 className="price">{price / 100}</h5>
+            <p className="desc">{description}</p>
+            <p className="info">
+              <span>avilable: </span>
+              {stock > 0 ? "in stock" : "out of stock"}
+            </p>
+            <p className="info">
+              <span>sku: </span>
+              {sku}
+            </p>
+            <p className="info">
+              <span>company: </span>
+              {company}
+            </p>
+            {stock > 0 && <AddToCart />}
+          </section>
+        </div>
+      </div>
     </Wrapper>
   );
 };
