@@ -1,16 +1,76 @@
-import React from 'react'
-import styled from 'styled-components'
-import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
-const Stars = () => {
-  
-   
+import React from "react";
+import styled from "styled-components";
+import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 
+const Stars = ({ stars, reviews }) => {
+  console.log(stars);
   return (
-   <div className="">
-     <h2>star</h2>
-   </div>
-  )
-}
+    <Wrapper>
+      <div className="stars">
+        {/* star */}
+        <span>
+          {stars >= 1 ? (
+            <BsStarFill />
+          ) : stars > 0.5 ? (
+            <BsStarHalf />
+          ) : (
+            <BsStar />
+          )}
+        </span>
+        {/* end star */}
+
+         {/* star */}
+         <span>
+          {stars >= 2 ? (
+            <BsStarFill />
+          ) : stars > 1.5 ? (
+            <BsStarHalf />
+          ) : (
+            <BsStar />
+          )}
+        </span>
+        {/* end star */}
+
+         {/* star */}
+         <span>
+          {stars >= 3 ? (
+            <BsStarFill />
+          ) : stars > 2.5 ? (
+            <BsStarHalf />
+          ) : (
+            <BsStar />
+          )}
+        </span>
+        {/* end star */}
+
+         {/* star */}
+         <span>
+          {stars >= 4 ? (
+            <BsStarFill />
+          ) : stars > 3.5 ? (
+            <BsStarHalf />
+          ) : (
+            <BsStar />
+          )}
+        </span>
+        {/* end star */}
+
+         {/* star */}
+         <span>
+          {stars === 5 ? (
+            <BsStarFill />
+          ) : stars > 4.5 ? (
+            <BsStarHalf />
+          ) : (
+            <BsStar />
+          )}
+        </span>
+        {/* end star */}
+      </div>
+      <p className="reviews">({reviews} reviews)</p>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,5 +85,5 @@ const Wrapper = styled.div`
     margin-bottom: 0;
   }
   margin-bottom: 0.5rem;
-`
-export default Stars
+`;
+export default Stars;
