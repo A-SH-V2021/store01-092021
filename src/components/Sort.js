@@ -5,7 +5,9 @@ import styled from 'styled-components'
 const Sort = () => {
  
   return (
-    <div className=""></div>
+    <div className="">
+      sort
+    </div>
   )
 }
 

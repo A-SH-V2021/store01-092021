@@ -6,7 +6,9 @@ import ListView from './ListView'
 const ProductList = () => {
  
   return (
-    <div className=""></div>
+    <div className="">
+      product list
+    </div>
   )
 }
 
