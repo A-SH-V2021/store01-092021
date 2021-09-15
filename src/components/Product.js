@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { formatPrice } from "../utils/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+// import { formatPrice } from "../utils/helpers";
 
 const Product = ({ id, image, name, price }) => {
   return (

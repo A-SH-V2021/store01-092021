@@ -8,7 +8,9 @@ const Filters = () => {
   
 
   return (
-    <div className="">filters</div>
+    <div className="">
+      <h2>filters</h2>
+    </div>
   )
 }
 

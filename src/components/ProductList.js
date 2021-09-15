@@ -1,15 +1,15 @@
-import React from 'react'
-import { useFilterContext } from '../context/filter_context'
-import GridView from './GridView'
-import ListView from './ListView'
+import React from "react";
+import { useFilterContext } from "../context/filter_context";
+import GridView from "./GridView";
+import ListView from "./ListView";
+import Product from "./Product";
 
 const ProductList = () => {
- 
-  return (
-    <div className="">
-      product list
-    </div>
-  )
-}
+  const { filtered_products: products, grid_view } = useFilterContext();
+  if (grid_view===false) {
+    return <ListView products={products} />;
+  }
+  return <GridView products={products}></GridView>;
+};
 
-export default ProductList
+export default ProductList;

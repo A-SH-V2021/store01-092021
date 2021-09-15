@@ -6,7 +6,7 @@ const Sort = () => {
  
   return (
     <div className="">
-      sort
+      <h2>sort</h2>
     </div>
   )
 }
