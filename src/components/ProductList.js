@@ -6,7 +6,10 @@ import Product from "./Product";
 
 const ProductList = () => {
   const { filtered_products: products, grid_view } = useFilterContext();
-  if (grid_view===false) {
+  if (products.length < 1) {
+    return <h5>sorry there's no items</h5>;
+  }
+  if (grid_view === false) {
     return <ListView products={products} />;
   }
   return <GridView products={products}></GridView>;
