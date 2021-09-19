@@ -29,6 +29,9 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
 
+  useEffect(() => {
+    dispatch({type:SORT_PRODUCTS})
+  }, [products,state.sort])
   const listView = () => {
     dispatch({ type: SET_LISTVIEW });
   };
@@ -39,6 +42,8 @@ export const FilterProvider = ({ children }) => {
     const value = e.target.value
     dispatch({ type: UPDATE_SORT,payload:value });
   };
+
+ 
  
   return (
     <FilterContext.Provider
