@@ -43,6 +43,7 @@ const Filters = () => {
           {/*end search input */}
           {/* category section */}
           <div className="form-control">
+            <h5>category</h5>
             {categories.map((cat, idx) => {
               return (
                 <button
@@ -58,6 +59,53 @@ const Filters = () => {
             })}
           </div>
           {/*end category section */}
+          {/* company section */}
+          <div className="form-control">
+            <h5>company </h5>
+            <select name="company" onChange={updateFilter} className="company">
+              {companies.map((com, idx) => {
+                return (
+                  <option key={idx} value={com}>
+                    {com}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          {/* end company section */}
+          {/* colors */}
+          <div className="form-control">
+            <h5>colors</h5>
+            <div className="colors">
+              {colors.map((c, idx) => {
+                if (c === "all") {
+                  return (
+                    <button
+                      className={color === c ? "all-btn active" : "all-btn"}
+                      name="color"
+                      value={c}
+                      onClick={updateFilter}
+                    >
+                      all
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    name="color"
+                    value={c}
+                    key={idx}
+                    className={color === c ? "color-btn active" : "color-btn"}
+                    style={{ background: c }}
+                    onClick={updateFilter}
+                  >
+                    {color === c ? <FaCheck /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* end colors */}
         </form>
       </div>
     </Wrapper>
