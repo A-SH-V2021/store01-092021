@@ -20,6 +20,11 @@ const Filters = () => {
     clearFilter,
     all_products,
   } = useFilterContext();
+
+  const categories = getUniqueValues(all_products, "category");
+  const companies = getUniqueValues(all_products, "company");
+  const colors = getUniqueValues(all_products, "colors");
+
   return (
     <Wrapper>
       <div className="content">
@@ -36,6 +41,23 @@ const Filters = () => {
             />
           </div>
           {/*end search input */}
+          {/* category section */}
+          <div className="form-control">
+            {categories.map((cat, idx) => {
+              return (
+                <button
+                  key={idx}
+                  onClick={updateFilter}
+                  name="category"
+                  value={cat}
+                  className={category === cat ? "active" : null}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+          {/*end category section */}
         </form>
       </div>
     </Wrapper>
@@ -73,7 +95,7 @@ const Wrapper = styled.section`
     cursor: pointer;
   }
   .active {
-    border-color: var(--clr-grey-5);
+    border-color: var(--clr-red-dark);
   }
   .company {
     background: var(--clr-grey-10);
