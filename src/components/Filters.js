@@ -14,7 +14,7 @@ const Filters = () => {
       min_price,
       max_price,
       price,
-      shippng,
+      shipping,
     },
     updateFilter,
     clearFilter,
@@ -62,7 +62,7 @@ const Filters = () => {
           {/* company section */}
           <div className="form-control">
             <h5>company </h5>
-            <select name="company" onChange={updateFilter} className="company">
+            <select name="company" value={company} onChange={updateFilter} className="company">
               {companies.map((com, idx) => {
                 return (
                   <option key={idx} value={com}>
@@ -81,6 +81,7 @@ const Filters = () => {
                 if (c === "all") {
                   return (
                     <button
+                      key={idx}
                       className={color === c ? "all-btn active" : "all-btn"}
                       name="color"
                       value={c}
@@ -106,7 +107,37 @@ const Filters = () => {
             </div>
           </div>
           {/* end colors */}
+          {/* price input */}
+          <div className="form-control">
+            <h5>price</h5>
+            <p className="price">${price / 100}</p>
+            <input
+              type="range"
+              name="price"
+              id="price"
+              min={min_price}
+              max={max_price}
+              value={price}
+              onChange={updateFilter}
+            />
+          </div>
+          {/* end price input */}
+          {/* shipping */}
+          <div className="form-control shipping">
+            <label htmlFor="shipping">free shiiping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              checked={shipping}
+              onChange={updateFilter}
+            />
+          </div>
+          {/* end shipping */}
         </form>
+        <button className="clear-btn" onClick={clearFilter}>
+          clear filters
+        </button>
       </div>
     </Wrapper>
   );

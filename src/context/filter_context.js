@@ -25,7 +25,7 @@ const initialState = {
     min_price: 0,
     max_price: 0,
     price: 0,
-    shippng: false,
+    shipping: false,
   },
 };
 
@@ -40,9 +40,9 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
-    dispatch({type:FILTER_PRODUCTS})
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.sort,state.filters]);
+  }, [products, state.sort, state.filters]);
 
   const listView = () => {
     dispatch({ type: SET_LISTVIEW });
@@ -56,14 +56,24 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateFilter = (e) => {
-    let name=e.target.name
-    let value=e.target.value
-    console.log(name,value);
-   dispatch({type:UPDATE_FILTERS,payload:{name,value}})
-  }
+    let name = e.target.name;
+    let value = e.target.value;
+    if (name === "company") {
+      console.log(e.target.innerHTML);
+      value = e.target.value;
+    }
+    if (name === "price") {
+      value = Number(value);
+    }
+    if (name === "shipping") {
+      value = e.target.checked;
+    }
+    console.log(name, value);
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
   const clearFilter = () => {
-    
-  }
+    dispatch({ type: CLEAR_FILTERS });
+  };
 
   return (
     <FilterContext.Provider
