@@ -86,7 +86,18 @@ const filter_reducer = (state, action) => {
         (product) => product.company === company
       );
     }
-
+    if (color !== "all") {
+      tempProduct = tempProduct.filter((item) => {
+        return item.colors.find((c) => c === color);
+      });
+    }
+    if (price) {
+      tempProduct = tempProduct.filter((p) => p.price <= price);
+    }
+    if (shipping) {
+      console.log(tempProduct);
+      tempProduct=tempProduct.filter(item=>item.shipping)
+    }
     return { ...state, filtered_products: tempProduct };
   }
 
@@ -99,7 +110,7 @@ const filter_reducer = (state, action) => {
         category: "all",
         company: "all",
         color: "all",
-        price: state.filters.max_price,
+        price: state.filters.min_price,
         shipping: false,
       },
     };

@@ -59,9 +59,10 @@ export const FilterProvider = ({ children }) => {
     let name = e.target.name;
     let value = e.target.value;
     if (name === "company") {
-      console.log(e.target.innerHTML);
+     
       value = e.target.value;
     }
+    
     if (name === "price") {
       value = Number(value);
     }
