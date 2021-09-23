@@ -6,9 +6,10 @@ import { CartContent, PageHero } from "../components";
 
 const CartPage = () => {
   return (
-    <>
+    <Wrapper>
+      <PageHero title="cart" />
       <h1>cart</h1>
-    </>
+    </Wrapper>
   );
 };
 
