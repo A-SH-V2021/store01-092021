@@ -23,6 +23,7 @@ const CartPage = () => {
       <PageHero title="cart" />
       <Wrapper>
         <h2>cart</h2>
+        <CartContent />
       </Wrapper>
     </main>
   );

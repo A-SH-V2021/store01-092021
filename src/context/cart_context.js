@@ -9,13 +9,13 @@ import {
 } from "../actions";
 
 const getItemsFromLS = () => {
-  let cart=localStorage.getItem('cart')
+  let cart = localStorage.getItem("cart");
   if (cart) {
-    return JSON.parse(localStorage.getItem('cart'))
+    return JSON.parse(localStorage.getItem("cart"));
   } else {
-    return []
+    return [];
   }
-}
+};
 
 const initialState = {
   cart: getItemsFromLS(),
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   // toggle amounts
   const toggleAmounts = (id, amount) => {};
   // clear cart
-
+  const clearCart = () => {};
   // add items to local storage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
@@ -45,7 +45,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, removeItem, toggleAmounts }}
+      value={{ ...state, addToCart, removeItem, toggleAmounts, clearCart }}
     >
       {children}
     </CartContext.Provider>
