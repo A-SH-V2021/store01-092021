@@ -18,7 +18,7 @@ const getItemsFromLS = () => {
 }
 
 const initialState = {
-  cart: getItemsFromLS,
+  cart: getItemsFromLS(),
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
