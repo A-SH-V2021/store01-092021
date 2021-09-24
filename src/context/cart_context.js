@@ -8,8 +8,17 @@ import {
   COUNT_CART_TOTALS,
 } from "../actions";
 
+const getItemsFromLS = () => {
+  let cart=localStorage.getItem('cart')
+  if (cart) {
+    return JSON.parse(localStorage.getItem('cart'))
+  } else {
+    return []
+  }
+}
+
 const initialState = {
-  cart: [],
+  cart: getItemsFromLS,
   total_items: 0,
   total_amount: 0,
   shipping_fee: 534,
@@ -19,12 +28,25 @@ const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  // add to cart
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
   };
+  //  remove item
+  const removeItem = (id) => {};
+  // toggle amounts
+  const toggleAmounts = (id, amount) => {};
+  // clear cart
+
+  // add items to local storage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ ...state, addToCart }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, removeItem, toggleAmounts }}
+    >
       {children}
     </CartContext.Provider>
   );
